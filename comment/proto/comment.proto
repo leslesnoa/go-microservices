@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package comment;
+
+option go_package = "./comment/commentpb";
+
+service CommentService {
+  rpc CreateComment(Comment) returns (Empty) {};
+  rpc GetAllComment(Empty) returns (Comments) {};
+  rpc GetCommentByPostId(GetCommentByPostIdRequest) returns (Comments) {};
+}
+
+message Empty {
+}
+
+message Comment {
+  int64 id = 1;
+  int64 comment_by_post_id = 2;
+  string content = 3;
+}
+
+message Comments {
+  repeated Comment comments = 1;
+}
+
+message GetCommentByPostIdRequest {
+  int64 comment_by_post_id =1;
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package post;
+
+option go_package = "./post/postpb";
+
+service PostService {
+  rpc CreatePost(Post) returns (Empty);
+  rpc GetAllPosts(Empty) returns (Posts);
+}
+
+message Empty {
+}
+
+message Post {
+  int64 id = 1;
+  string title = 2;
+  string text = 3;
+}
+
+message Posts {
+  repeated Post posts = 1;
+}
